@@ -48,6 +48,19 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         body: Column(
           children: <Widget>[
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  ChatMessage(),
+                  ChatMessage(),
+                  ChatMessage(),
+                  ChatMessage()
+                ],
+              ),
+            ),
+            Divider(
+              height: 1.0,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).cardColor,
@@ -114,3 +127,39 @@ class _TextComposerState extends State<TextComposer> {
     );
   }
 }
+
+class ChatMessage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage("https://www.efi.com/library/efi/images/products/1046/altonatestsuite2_tn.jpg?h=210&w=150"),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Daniel",
+                  style: Theme.of(context).textTheme.subhead,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  child: Text("Text"),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
